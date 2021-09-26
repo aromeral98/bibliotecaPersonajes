@@ -1,1 +1,48 @@
-<p>personaje works!</p>
+<mat-grid-list 
+cols="1"
+*ngIf="!personaje; else divpersonaje">
+    <mat-grid-tile >
+        <mat-spinner></mat-spinner>
+    </mat-grid-tile>
+</mat-grid-list>
+<ng-template #divpersonaje>
+    <div fxLayout="row"
+    fxLayout.xs="column"
+    fxLayoutGap="30px">
+
+<div fxFlex="50">
+    <mat-card>
+        <mat-card-header>
+          
+          <mat-card-title>{{personaje.uid}}</mat-card-title>
+          <mat-card-subtitle>{{personaje.especie}}</mat-card-subtitle>
+        </mat-card-header>
+    
+        <img mat-card-image style="max-height:750px;" [src]="personaje | image">
+      <mat-card-content>
+         
+      </mat-card-content>
+    </mat-card>
+</div>
+<div fxFlex="50">
+    <h1>{{personaje.uid}}</h1>
+    <p>
+        <strong>Genero: </strong>{{personaje.genero}}
+      <br>
+      <strong>Frases: </strong>{{personaje.frases}}
+      <br>
+      <br>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores maiores animi quisquam asperiores blanditiis esse soluta sint consequuntur repellat mollitia sed aut quasi sequi, dolorum corrupti voluptatum aperiam suscipit neque?
+    </p>
+      <br>
+      <div fxLayout>
+      <button mat-raised-button color="warn"
+      (click)="regresar()">
+          Regresar
+      </button>
+        <span class="spacer"></span>
+      <button mat-raised-button color="accent" routerLink='/personajes/editar/{{personaje.id}}'>Editar </button>
+    </div>
+</div>
+</div>
+</ng-template>

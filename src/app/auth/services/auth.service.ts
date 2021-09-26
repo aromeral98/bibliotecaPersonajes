@@ -12,7 +12,7 @@ import { Auth } from '../interfaces/auth.interface';
   providedIn: 'root'
 })
 export class AuthService {
-  private baseUrl:string =environment.baseUserUrl
+  private baseUrl:string =environment.baseUrl
   private _auth:Auth | undefined;
 
 
@@ -27,7 +27,7 @@ export class AuthService {
       return of (false);
     }
     
-    return this.http.get<Auth>(`${this.baseUrl}usuarios/1`)
+    return this.http.get<Auth>(`${this.baseUrl}usuarios/2`)
       .pipe(
         map(auth=> {
           this._auth=auth;
@@ -35,15 +35,22 @@ export class AuthService {
       })
       )
     }
-
-  login(){
-    return this.http.get<Auth>(`${this.baseUrl}usuarios/1`)
+    
+  
+  login(email:string,password:any){
+    
+    return this.http.get<Auth>(`${this.baseUrl}usuarios/?email=${email}&password=${password}`)
     .pipe(
-      tap(auth=>{this._auth=auth}),
-      tap(auth=>{localStorage.setItem('token',auth.id)})
+      tap(auth=>{
+        this._auth=auth
+      })
     )
   }
   logout(){
     this._auth=undefined;
+  }
+
+  registrar(formulario:Auth){
+    return this.http.post<Auth>(this.baseUrl+'usuarios/',formulario)
   }
 }

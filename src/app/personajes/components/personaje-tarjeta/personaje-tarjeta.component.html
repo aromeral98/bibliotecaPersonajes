@@ -1,1 +1,24 @@
-<p>personaje-tarjeta works!</p>
+
+    <mat-card style="height: 100%;">
+        <mat-card-header>
+          
+          <mat-card-title>{{personaje.uid}}</mat-card-title>
+          <mat-card-subtitle>{{personaje.especie}}</mat-card-subtitle>
+        </mat-card-header>
+    
+        <img mat-card-image [src]="personaje | image">
+      <mat-card-content>
+          <h3>{{personaje.genero}}</h3>
+          <p>
+            <strong>Frases: </strong>{{personaje.frases}}
+            </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <div id="contenedor" fxLayout
+        >
+          <button mat-raised-button color="warn" routerLink='/personajes/{{personaje.id |lowercase}}'>Leer más... </button>
+          <span class="spacer"></span>
+          <button mat-raised-button color="accent" routerLink='/personajes/editar/{{personaje.id}}'>Editar </button>
+        </div>
+        </mat-card-actions>
+    </mat-card>

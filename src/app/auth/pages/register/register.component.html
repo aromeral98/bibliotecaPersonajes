@@ -1,1 +1,72 @@
-<p>register works!</p>
+<div class="center-content">
+    <div 
+     
+    id="form-style">
+        <h1>Formulario de registro</h1>
+        <form 
+        
+        (ngSubmit)="registrar()"
+        autocomplete="off" 
+        [formGroup]="miFormulario"
+        >
+            <!-- USUARIO -->
+            
+            <div >
+                <mat-form-field appearance="legacy" fxLayout="column" fxFlex >
+                    <mat-label >Introduce tu nombre</mat-label>
+                    <input
+                
+                    type="text" 
+                    matInput 
+                    formControlName="usuario" 
+                    placeholder="Nombre">
+                  </mat-form-field>      
+                <span class="danger"
+                *ngIf="campoEsValido('usuario')" >
+                    Debe de ser mas de 3 letras </span>
+            </div>
+            
+            <!-- EMAIL -->
+            <div>
+                <mat-form-field fxLayout="column" fxFlex  appearance="legacy">
+                    <mat-label>Introduce tu email</mat-label>
+                    <input
+                    type="text" 
+                    matInput 
+                    formControlName="email"
+                    placeholder="Email">
+                  </mat-form-field>
+                <span  class="danger" 
+                *ngIf="campoEsValido('email')" >
+                {{emailErrorMsg}}</span>
+            </div>
+            
+            <!-- Contraseña         -->
+
+                <div>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Introduce una password</mat-label>
+                        <input formControlName="password" matInput [type]="hide ? 'password' : 'text'">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                      </mat-form-field>
+               
+                <span class="danger"
+                *ngIf="campoNoValido('password')">
+                La contraseña debe ser mayor de 6 caracteres</span>
+            </div>
+
+            <div >
+                <div >
+                    <button mat-raised-button
+                    color="primary"
+                    type="submit" >
+                    Registrar usuario
+                </button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

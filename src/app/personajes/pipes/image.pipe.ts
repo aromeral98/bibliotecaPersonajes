@@ -1,20 +1,20 @@
-// import { Pipe, PipeTransform } from '@angular/core';
-// import { Heroe } from '../interfaces/heroe.interface';
+import { Pipe, PipeTransform } from '@angular/core';
+import { Personaje } from '../interfaces/personaje.interface';
 
-// @Pipe({
-//   name: 'image'
-// })
-// export class ImagePipe implements PipeTransform {
+@Pipe({
+  name: 'image'
+})
+export class ImagePipe implements PipeTransform {
   
-//   transform(heroe:Heroe): string {
+  transform(personaje:Personaje): string {
 
-//     console.log('pipe se procesó')
-//     if(!heroe.id && !heroe.alt_img){
-//       return `assets/no-image.png`
-//     }else if(heroe.alt_img){
-//       return heroe.alt_img
-//     }else{
-//     return `assets/heroes/${heroe.id}.jpg`}
-//   }
+    console.log('pipe se procesó')
+    if(!personaje.id && !personaje.alt_img){
+      return `assets/no-image.png`
+    }else if(personaje.alt_img){
+      return personaje.alt_img
+    }else{
+    return `assets/personajes/${personaje.id}.jpg`}
+  }
 
-// }
+}
