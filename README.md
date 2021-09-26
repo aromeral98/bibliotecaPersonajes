@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.0.
 
+## How to run it
+
+You must open powershell and use ng serve,and next go to the database folder and execute json-server --watch db.json
+So now you have your database and the app running
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
